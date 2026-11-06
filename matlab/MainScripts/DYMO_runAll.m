@@ -1,8 +1,9 @@
-function T = DYMO_runAll(startStage)
+function T = DYMO_runAll(startStage, stopStage)
 %DYMO_RUNALL  Run the whole DYMO pipeline for the active tag, in order, timed.
 %
 %   DYMO_runAll          % run every stage, from the beginning
 %   DYMO_runAll(6)       % resume at stage 6 (the list is printed at the start)
+%   DYMO_runAll(1, 5)    % run stages 1 to 5 only (the graphs and the cycles)
 %   T = DYMO_runAll;     % also return the timing table
 %
 % WHAT IT DOES
@@ -28,13 +29,15 @@ function T = DYMO_runAll(startStage)
 % results folder must be outside the repository.
 %
 % EXPECTED TIME
-% For the simulated data (13 dyads included) about 1 hour; for about 30 dyads
-% several hours, mostly the temporal mapper and the cycle search.
+% For the simulated data (13 dyads included) stages 1-5 alone take about
+% 1.5 hours on a laptop (the cycle search, stage 5, about 45 minutes); for
+% about 30 dyads several hours, mostly the temporal mapper and the cycle search.
 %
 % Written by Patience Akatuhwera with help from Claude (Anthropic, an AI
 % assistant). The author reviewed the code and is responsible for it.
 
 if nargin < 1 || isempty(startStage), startStage = 1; end
+if nargin < 2, stopStage = []; end
 
 if ~exist('DYMO_files', 'file') || ~exist('tknndigraph', 'file')
     error('DYMO_runAll:setup', 'Run DYMO_setup.m first (it adds Functions/ and tmapper2 to the path).');
@@ -110,20 +113,24 @@ stages = { ...
     };
 
 nStage = numel(stages);
+if isempty(stopStage), stopStage = nStage; end
 if startStage < 1 || startStage > nStage
     error('DYMO_runAll:badStart', 'startStage must be between 1 and %d.', nStage);
+end
+if stopStage < startStage || stopStage > nStage
+    error('DYMO_runAll:badStop', 'stopStage must be between %d and %d.', startStage, nStage);
 end
 
 fprintf('\n=================== DYMO_runAll ===================\n');
 fprintf('Run tag          : %s\n', tag);
 fprintf('Analysed window  : %g s\n', win);
 fprintf('Results go under : %s\n', pwd);
-fprintf('Stages           : %d to %d of %d\n', startStage, nStage, nStage);
+fprintf('Stages           : %d to %d of %d\n', startStage, stopStage, nStage);
 fprintf('Started          : %s\n', datestr(now, 'yyyy-mm-dd HH:MM:SS'));
 fprintf('===================================================\n');
 
-Stage      = (startStage:nStage)';
-Script     = stages(startStage:nStage);
+Stage      = (startStage:stopStage)';
+Script     = stages(startStage:stopStage);
 Seconds    = nan(numel(Stage), 1);
 Cumulative = nan(numel(Stage), 1);
 Finished   = strings(numel(Stage), 1);
@@ -180,8 +187,10 @@ if ~isempty(failedAt)
         Stage(failedAt), Script{failedAt});
 end
 
-fprintf(['\nAll %d stages completed. Results: %s\n' ...
-         'To compare with the Python version: python tools/compare_matlab_python.py\n'], nStage, pwd);
+fprintf('\nStages %d to %d completed. Results: %s\n', startStage, stopStage, pwd);
+if stopStage == nStage
+    fprintf('To compare with the Python version: python tools/compare_matlab_python.py\n');
+end
 end
 
 % ------------------------------------------------------------------

@@ -39,13 +39,13 @@ cd python/notebooks
 jupyter lab
 ```
 
-and open one of the three notebooks. The first run writes the simulated dyads (1–3 minutes, about 0.2 GB).
+and open one of the three notebooks (each has a MATLAB script that does the same, see the table). The first run writes the simulated dyads (1–3 minutes, about 0.2 GB).
 
-| Notebook | What it does | Statistics |
-|---|---|---|
-| `dyadmocap_one_dyad.ipynb` | One dyad, step by step, up to its Temporal Mapper graphs and a table of their graph and cycle metrics | none |
-| `dyadmocap_summary.ipynb` | The Temporal Mapper graph of every dyad, then one table of graph and cycle metrics per dyad and conversation | none |
-| `dyadmocap_walkthrough.ipynb` | The whole pipeline: one dyad step by step, then all dyads with the statistics and figures | yes |
+| Python notebook | MATLAB script | What it does | Statistics |
+|---|---|---|---|
+| `dyadmocap_one_dyad.ipynb` | `matlab/dyadmocap_one_dyad.m` | One dyad, step by step, up to its Temporal Mapper graphs and a table of their graph and cycle metrics | none |
+| `dyadmocap_summary.ipynb` | `matlab/dyadmocap_summary.m` | The Temporal Mapper graph of every dyad, then one table of graph and cycle metrics per dyad and conversation | none |
+| `dyadmocap_walkthrough.ipynb` | `matlab/dyadmocap_walkthrough.m` | The whole pipeline: one dyad step by step, then all dyads with the statistics and figures | yes |
 
 **The whole pipeline as one command** (from the `python` folder):
 
@@ -72,7 +72,7 @@ python/dyadmocap/             the package: stage modules (run_*.py) and building
 python/notebooks/             the three notebooks (committed with outputs cleared)
 matlab/DYMO_setup.m           puts the MATLAB functions, stages and Temporal Mapper 2 on the path
 matlab/DYMO_runAll.m          runs every MATLAB stage in order
-matlab/dyadmocap_walkthrough.m  the MATLAB walkthrough (save as .mlx to use it as a live script)
+matlab/dyadmocap_*.m          the three MATLAB scripts, as the notebooks (save as .mlx to use them as live scripts)
 matlab/Functions/            the MATLAB functions
 matlab/MainScripts/          the MATLAB stage scripts (one per analysis)
 tools/compare_matlab_python.py  checks that the two versions give the same tables
@@ -100,7 +100,7 @@ DYMO_setup
 DYMO_runAll                 % every stage; DYMO_runAll(18) resumes at stage 18
 ```
 
-or open `matlab/dyadmocap_walkthrough.m`, which explains and runs the same thing (about 1 hour with the simulated data). Results go to `outputs/matlab_results/` (set `matlab_results_dir` to change it). On Windows, keep that folder's path short (for example `C:\Users\<you>\dymo_results`): some figure paths inside it are over 150 characters, and Windows refuses paths over 260.
+or open `matlab/dyadmocap_walkthrough.m`, which explains and runs the same thing (several hours with the simulated data on a laptop; stages 1–5 alone, the graphs and the cycles, took about 1.5 hours). Results go to `outputs/matlab_results/` (set `matlab_results_dir` to change it). On Windows, keep that folder's path short (for example `C:\Users\<you>\dymo_results`): some figure paths inside it are over 150 characters, and Windows refuses paths over 260.
 
 ### Do the two versions agree?
 
