@@ -1,0 +1,7 @@
+# Files written by simulate_dyad.py are not committed: the fixed seeds make
+# every run identical, so the script is the record.
+generated/
+*_opt.txt
+*_opt.txt.gz
+simulated_*.json
+simulated_*_hidden_states.csv*

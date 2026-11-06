@@ -1,0 +1,26 @@
+# Python environment for dyadmocap-temporal-mapper.
+#
+# Create it once:
+#     conda env create -f environment.yml
+# Then, every time:
+#     conda activate dyadmocap-tm
+#
+# All packages come from conda-forge only (mixing channels in one environment
+# can break it). Temporal Mapper is an external dependency, installed from PyPI:
+# tmapper-py (https://github.com/Multiscale-Complex-Systems-Lab/tmapper-py).
+name: dyadmocap-tm
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - networkx
+  - ffmpeg            # skeleton animations as MP4 (otherwise GIF)
+  - jupyterlab        # to run the walkthrough notebook
+  - ipykernel
+  - pip
+  - pip:
+      - tmapper-py==0.2.0

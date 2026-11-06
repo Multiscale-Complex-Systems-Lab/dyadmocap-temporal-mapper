@@ -1,0 +1,9 @@
+# Outputs of the pipeline and the notebook (figures, videos, tables) are not
+# committed: the code regenerates them.
+outputs/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.asv
+# your local paths (copy dymo_config.example.ini to dymo_config.ini)
+dymo_config.ini

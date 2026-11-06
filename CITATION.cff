@@ -1,0 +1,24 @@
+# DRAFT for the lab review: the authors, version and release date are to be
+# confirmed before the repository is made public.
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "dyadmocap-temporal-mapper: Temporal Mapper analysis of dyadic motion capture"
+abstract: >-
+  Analysis code, in Python and MATLAB, for studying how two seated people's
+  body movements are organised over a conversation, using the Temporal Mapper
+  on dyadic motion-capture data, and comparing a casual chat with a conflict
+  conversation. Runs on simulated dyads; the study's recordings are not public.
+authors:
+  - family-names: Akatuhwera
+    given-names: Patience
+    affiliation: "Multiscale Complex Systems Lab, Michigan State University"
+version: "0.1.0"
+license: MIT
+repository-code: "https://github.com/Pesh282/dyadmocap-temporal-mapper"
+keywords:
+  - temporal mapper
+  - motion capture
+  - dyadic interaction
+  - nonverbal behaviour
+  - topological data analysis
