@@ -15,7 +15,7 @@ authors:
     affiliation: "Multiscale Complex Systems Lab, Michigan State University"
 version: "0.1.0"
 license: MIT
-repository-code: "https://github.com/Pesh282/dyadmocap-temporal-mapper"
+repository-code: "https://github.com/Multiscale-Complex-Systems-Lab/dyadmocap-temporal-mapper"
 keywords:
   - temporal mapper
   - motion capture
