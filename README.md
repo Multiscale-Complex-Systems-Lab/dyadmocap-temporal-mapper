@@ -4,8 +4,6 @@ Temporal Mapper analysis of dyadic motion capture: how two seated people's body 
 
 This repository holds the analysis code of the study, in Python and in MATLAB, each with one walkthrough that runs the whole pipeline. The study's recordings are not public, so the notebook runs on **simulated** dyads written by `data/simulated/simulate_dyad.py`. The code is the code that analysed the study data; only the input files differ. Results on simulated data are not findings.
 
-> DRAFT for review. The repository is private until the review is complete; the licence and the citation file are drafts.
-
 ## What the pipeline does
 
 | Stage | Module (`python/dyadmocap/`) | What it does |
@@ -115,6 +113,10 @@ python tools/compare_matlab_python.py
 ## Licence and citation
 
 The code is released under the MIT licence (`LICENSE`). If you use it, please cite it as described in `CITATION.cff`.
+
+This code uses Temporal Mapper. Please also cite:
+
+Zhang, M., Chowdhury, S., & Saggar, M. (2023). Temporal Mapper: Transition networks in simulated and real neural dynamics. *Network Neuroscience*, 7(2), 431–460. https://doi.org/10.1162/netn_a_00301
 
 ## Notes
 
