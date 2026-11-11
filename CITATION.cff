@@ -14,7 +14,7 @@ authors:
 version: "1.0.0"
 date-released: "2026-11-11"
 license: MIT
-repository-code: "https://github.com/Multiscale-Complex-Systems-Lab/dyadmocap-temporal-mapper"
+repository-code: "https://github.com/Pesh282/dyadmocap-temporal-mapper"
 keywords:
   - temporal mapper
   - motion capture
